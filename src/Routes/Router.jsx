@@ -1,5 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main/Main";
+import AddArticles from "../Pages/addArticles/AddArticles";
+import AllArticles from "../Pages/allArticles/AllArticles";
+import Subscription from "../Pages/subscription/Subscription";
+import MyArticles from "../Pages/myArticles/MyArticles";
+import PremiumArticles from "../Pages/premiumArticles/PremiumArticles";
+import Login from "../Pages/login/Login";
+import Register from "../Pages/register/Register";
+import Dashboard from "../Layouts/Dashboard/Dashboard";
+import Home from "../Pages/home/Home";
 
 export const router = createBrowserRouter([
     {
@@ -8,13 +17,41 @@ export const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<h1>this ishome</h1>
-            }
+                element:<Home/>
+            },
+            {
+                path:'/addArticles',
+                element:<AddArticles/>
+            },
+            {
+                path:"/allArticles",
+                element:<AllArticles/>
+            },
+            {
+                path:"/subscription",
+                element:<Subscription/>
+            },
+            {
+                path:"/myArticles",
+                element:<MyArticles/>
+            },
+            {
+                path:"/premiumArticles",
+                element:<PremiumArticles/>
+            },
         ]
     },
     {
+        path:'register',
+        element:<Register/>
+    },
+    {
         path:'login',
-        element:<h1>this is login</h1>
+        element:<Login/>
+    },
+    {
+        path:'dashboard',
+        element:<Dashboard/>
     }
 ])
 
