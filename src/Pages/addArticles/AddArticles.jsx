@@ -3,16 +3,27 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuthContext from "../../Hooks/useAuthContext";
+import { useQuery } from "@tanstack/react-query";
 
 
 
 const AddArticles = () => {
 
+
+    const axiosSecure = useAxiosSecure()
     const location = useLocation()
     useEffect(() => {
         document.title = "Home Repair" + location.pathname
     }, [location])
-    const axiosSecure = useAxiosSecure()
+
+    // load providers data
+    const { data: providers = [] } = useQuery({
+        queryKey: ['MYservicesData'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/publishers')
+            return res.data;
+        }
+    })
     const { user } = useAuthContext()
     const formHandle = (e) => {
         e.preventDefault()
@@ -34,26 +45,41 @@ const AddArticles = () => {
             .then(data => {
                 if (data.success) {
                     console.log(data)
-                    const article = { image: data.data.display_url, title, publisher, description, tags, email: user.email, date, status: "pending" }
-        
-                    console.log(article)
+                    const article = { image: data.data.display_url, title, publisher, description, tags, email: user.email, date, status: "pending", view: 0, type: 'free' }
+
+                    const newTags=tags.split(",")
+                    axiosSecure.get('/articlesTags')
+                    .then(data=>{
+                        const oldCollection = data.data[0].tags;
+                        newTags.map(tag=>{
+                            if(!oldCollection.includes(tag)){
+                                oldCollection.push(tag)
+                            }
+                            const updateTags= {tags:oldCollection}
+                            axiosSecure.put(`/articlesTags/${data.data[0]._id}`,updateTags)
+                            .then(data=>console.log(data.data))
+                            .catch(err=>console.log(err.message))
+                        })
+                        axiosSecure.post('/articles', article)
+                        .then(data => {
+                            if (data.data.insertedId) {
+                                toast.success('Successfully Add Service!')
+                                form.reset()
+                                
+                            }
+                        })
+                        .catch(err => console.log(err.message))
+                    })
+                    .catch(err=>console.log(err.message))
                 }
             })
             .catch(err => console.log(err.message))
 
-        
 
 
 
-        // axiosSecure.post('/api/v1/services', service)
-        //     .then(data => {
-        //         if (data.data.insertedId) {
-        //             toast.success('Successfully Add Service!')
-        //             form.reset()
-        //         }
 
-        //     })
-        //     .catch(err => console.log(err.message))
+
     }
 
     return (
@@ -67,25 +93,25 @@ const AddArticles = () => {
                     <label>
                         Article Title
                     </label>
-                    <input required className="w-full mt-1 px-4 py-2 drop-shadow-lg mb-4 rounded  " placeholder="Enter Service Name" type="text" name="title" id="" />
+                    <input required className="w-full mt-1 px-4 py-2 drop-shadow-lg mb-4 rounded  " placeholder="Enter Article Name" type="text" name="title" id="" />
                 </div>
 
                 <div className=" w-full">
                     <label>
                         Article Tags
                     </label>
-                    <input type="text" className="px-4 mt-1 w-full py-2 drop-shadow-lg rounded mb-4" name="tags" placeholder="Enter tags separate by coma (,)" id="" />
+                    <input type="text" required className="px-4 mt-1 w-full py-2 drop-shadow-lg rounded mb-4" name="tags" placeholder="Enter tags separate by coma (,)" id="" />
                 </div>
 
                 <div className="w-full">
                     <label >
                         Select publisher
                     </label>
-                    <select name="publisher" defaultValue='deafult' className="px-4 mt-1 w-full py-2 drop-shadow-lg rounded mb-4" id="">
+                    <select required name="publisher" defaultValue='deafult' className="px-4 mt-1 w-full py-2 drop-shadow-lg rounded mb-4" id="">
                         <option disabled value='deafult' >Select publisher</option>
-                        <option value="rokomari">Rokomari</option>
-                        <option value="rokomari">Rokomari</option>
-                        <option value="rokomari">Rokomari</option>
+                        {
+                            providers?.map(provider => <option key={provider._id} value={provider?.name}>{provider.name}</option>)
+                        }
 
                     </select>
                 </div>
@@ -94,7 +120,7 @@ const AddArticles = () => {
                     <label >
                         Article Image
                     </label>
-                    <input type="file" name="image" className="px-4 mt-1 w-full py-2 drop-shadow-lg rounded " id="" />
+                    <input required type="file" name="image" className="px-4 mt-1 w-full py-2 drop-shadow-lg rounded " id="" />
 
                 </div>
 

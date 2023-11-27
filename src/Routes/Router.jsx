@@ -9,6 +9,9 @@ import Login from "../Pages/login/Login";
 import Register from "../Pages/register/Register";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import Home from "../Pages/home/Home";
+import AllUsers from "../Pages/allUsers/AllUsers";
+import AdminAllArticles from "../Pages/adminAllArticles/AdminAllArticles";
+import AddPublisher from "../Pages/addPUblisher/AddPublisher";
 
 export const router = createBrowserRouter([
     {
@@ -51,7 +54,21 @@ export const router = createBrowserRouter([
     },
     {
         path:'dashboard',
-        element:<Dashboard/>
+        element:<Dashboard/>,
+        children:[
+            {
+                path:'allUsers',
+                element:<AllUsers/>
+            },
+            {
+                path:'adminAllArticles',
+                element:<AdminAllArticles/>
+            },
+            {
+                path:'addPublisher',
+                element:<AddPublisher/>
+            }
+        ]
     }
 ])
 
