@@ -11,10 +11,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAuthContext from '../../Hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 
-function createData(name, calories, fat, carbs, protein) {
 
-    return { name, calories, fat, carbs, protein };
-}
 
 
 

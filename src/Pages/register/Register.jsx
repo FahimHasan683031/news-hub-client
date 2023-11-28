@@ -43,9 +43,9 @@ const Signup = () => {
 
         createUseWithEmail(email, password)
             .then((res) => {
-                const user = { name: res.user.displayName,
-                     email: res.user.email,rol:'subscriber',
-                     image:res.user.photoURL }
+                const user = { name: name,
+                     email: email,rol:'subscriber',
+                     image:url }
                 axiosSecure.post('/users', user)
                     .then(res => {
                         console.log(res.data)
