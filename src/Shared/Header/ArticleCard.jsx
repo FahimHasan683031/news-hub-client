@@ -42,7 +42,12 @@ export default function ArticleCard({ article }) {
       return res.data;
     }
   })
-
+// update view
+const updateView= ()=>{
+  axiosSecure.get(`/articlesView/${article._id}`)
+  .then()
+  .catch(err=>console.log(err.message))
+}
 
   return (
     <Grid item xs={12} sm={6} md={6} lg={4} >
@@ -84,7 +89,7 @@ export default function ArticleCard({ article }) {
             type==="premium"?<div className='flex justify-between items-center'>
             <Link to={`/subscription`}><button className='px-4 py-[6px] ml-4 my-4 text-white bg-emerald-600 rounded-sm'>Tack Subscription</button></Link>
             <button className='text-emerald-600 px-2 py-1 h-9 mr-4 rounded-full bg-emerald-200 border border-emerald-600'>Premium</button>
-          </div> :<Link to={`/articleSingle/${article._id}`}><button className='px-4 py-[6px] ml-4 my-4 text-white bg-emerald-600 rounded-sm'>Details</button></Link>
+          </div> :<Link onClick={updateView} to={`/articleSingle/${article._id}`}><button className='px-4 py-[6px] ml-4 my-4 text-white bg-emerald-600 rounded-sm'>Details</button></Link>
           }
 
 

@@ -13,6 +13,7 @@ import AllUsers from "../Pages/allUsers/AllUsers";
 import AdminAllArticles from "../Pages/adminAllArticles/AdminAllArticles";
 import AddPublisher from "../Pages/addPUblisher/AddPublisher";
 import ArticleSingle from "../Pages/allArticles/ArticleSingle";
+import UpdateArticles from "../Pages/updateArticles/UpdateArticles";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path:'/articleSingle/:id',
                 element:<ArticleSingle/>
+            },
+            {
+                path:'/updateArticles/:id',
+                element:<UpdateArticles/>
             }
         ]
     },

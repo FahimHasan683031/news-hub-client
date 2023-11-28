@@ -14,7 +14,7 @@ const AllArticles = () => {
 
     useEffect(() => {
         
-        axiosSecure.get(`/articles?title=${searchText}&publisher=${publisherText}&tags=${tagsText}`)
+        axiosSecure.get(`/articles?title=${searchText}&publisher=${publisherText}&tags=${tagsText}&status=pending`)
             .then(data => setArticles(data.data))
     }, [searchText, axiosSecure,publisherText,tagsText])
     const searchInputHandle = e => {
