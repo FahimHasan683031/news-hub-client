@@ -13,6 +13,7 @@ const AllArticles = () => {
     const [tagsText,setTagText]=useState('')
 
     useEffect(() => {
+        
         axiosSecure.get(`/articles?title=${searchText}&publisher=${publisherText}&tags=${tagsText}`)
             .then(data => setArticles(data.data))
     }, [searchText, axiosSecure,publisherText,tagsText])
