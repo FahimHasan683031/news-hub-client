@@ -9,7 +9,7 @@ const PremiumArticles = () => {
   const [articles, setArticles] = useState([])
   useEffect(() => {
         
-    axiosSecure.get(`/articles?type=${type}`)
+    axiosSecure.get(`/articles?type=${type}&status=approve`)
         .then(data => setArticles(data.data))
 }, [ axiosSecure])
 
