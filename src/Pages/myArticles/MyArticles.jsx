@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { useQuery } from '@tanstack/react-query';
 import useAuthContext from '../../Hooks/useAuthContext';
 import { Link } from 'react-router-dom';
+import ReasonModal from './ReasonModal';
 
 
 
@@ -86,7 +87,7 @@ export default function MyArticles() {
                             <TableCell sx={{ fontSize: '12px' }} component="th" scope="row">
                                 {article.status}
                                 {
-                                    article.status === 'declined' ? <button className='px-4 py-[6px] ml-4 my-4 text-white bg-red-500 rounded-sm'>Reason</button> : ''
+                                    article.status === 'decline' ? <ReasonModal id={article._id}/>:''
                                 }
                             </TableCell>
                             <TableCell sx={{ fontSize: '12px' }} component="th" scope="row">

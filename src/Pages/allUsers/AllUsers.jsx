@@ -83,7 +83,7 @@ export default function AllUsers() {
     
 
     return (
-        <TableContainer sx={{ maxWidth: 900, margin: '50px auto', }} component={Paper}>
+        <TableContainer sx={{ maxWidth: 900, margin: '20px auto', }} component={Paper}>
             <Table sx={{ margin: '0 auto', px: '30px' }} aria-label="simple table">
                 <TableHead>
                     <TableRow>

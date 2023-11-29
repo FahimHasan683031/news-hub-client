@@ -11,6 +11,7 @@ import { Grid } from '@mui/material';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,21 +28,13 @@ export default function ArticleCard({ article }) {
   const { image, title, publisher, description, email, date, type } = article
 
   const axiosSecure = useAxiosSecure()
-  const { data: author = [] } = useQuery({
-    queryKey: ['author'],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/users/${email}`)
-      return res.data;
-    }
-  })
+  const [author,setAuthor]=useState()
+  useEffect(()=>{
+      axiosSecure.get(`/users/${article.email}`)
+      .then(res=>setAuthor(res.data))
+       
+  },[article.email,axiosSecure])
 
-  const { data: publisherInfo = [] } = useQuery({
-    queryKey: ['publisher'],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/publishers/${publisher}`)
-      return res.data;
-    }
-  })
 // update view
 const updateView= ()=>{
   axiosSecure.get(`/articlesView/${article._id}`)

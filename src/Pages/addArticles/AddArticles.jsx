@@ -44,7 +44,6 @@ const AddArticles = () => {
         }).then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    console.log(data)
                     const article = { image: data.data.display_url, title, publisher, description, tags, email: user.email, date, status: "pending", view: 0, type: 'free' }
 
                     const newTags=tags.split(",")
@@ -57,7 +56,7 @@ const AddArticles = () => {
                             }
                             const updateTags= {tags:oldCollection}
                             axiosSecure.put(`/articlesTags/${data.data[0]._id}`,updateTags)
-                            .then(data=>console.log(data.data))
+                            .then()
                             .catch(err=>console.log(err.message))
                         })
                         axiosSecure.post('/articles', article)
