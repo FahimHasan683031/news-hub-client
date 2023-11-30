@@ -55,17 +55,18 @@ export const router = createBrowserRouter([
             {
                 path:'/updateArticles/:id',
                 element:<Privet><UpdateArticles/></Privet>
-            }
+            },
+            {
+                path:'register',
+                element:<Register/>
+            },
+            {
+                path:'login',
+                element:<Login/>
+            },
         ]
     },
-    {
-        path:'register',
-        element:<Register/>
-    },
-    {
-        path:'login',
-        element:<Login/>
-    },
+    
     {
         path:'dashboard',
         element:<AdminPrivate><Dashboard/></AdminPrivate>,
