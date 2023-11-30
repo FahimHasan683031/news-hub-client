@@ -12,8 +12,8 @@ const Header = () => {
         <div className=" shadow-md bg-teal-100 z-50 relative">
             <div className="flex justify-between items-center   max-w-screen-xl mx-auto px-6 ">
                 <div className="">
-                    <img className="w-[40px] h-[40px] mx-auto" src={'https://i.ibb.co/wBp0z2L/home-repair-logo-with-maintenance-tools-and-house-vector-26674415-removebg-preview.png'} alt="" />
-                    <h1 className="text-lg text-teal-600 pb-1 font-bold"><span className="text-slate-700">HOME</span> REPAIR</h1>
+                    
+                    <h1 className="text-2xl text-teal-600 py-5 font-bold"><span className="text-slate-700">NEWS </span>HUB</h1>
                 </div>
 
                 <div className="hidden lg:flex">

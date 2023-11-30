@@ -3,6 +3,7 @@ import Header from "../../Shared/Header/Header";
 import useAuthContext from "../../Hooks/useAuthContext";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
+import Footer from "../../Shared/Footer";
 
 const Main = () => {
     // user subscription expire check
@@ -28,7 +29,7 @@ const Main = () => {
         <div>
             <Header />
             <Outlet />
-
+            <Footer/>
         </div>
     );
 };
