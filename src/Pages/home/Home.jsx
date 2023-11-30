@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import PricingPlan from "./PricingPlan";
 import ArticleCarosole from "./ArticleCarosole/ArticleCarosole";
 import Publisher from "./publisher/Publisher";
+import Statistic from "./Statistic";
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <ArticleCarosole/>
             <PricingPlan/>
             <Publisher/>
+            <Statistic/>
            
         </div>
     );
