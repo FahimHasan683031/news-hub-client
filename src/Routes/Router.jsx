@@ -14,11 +14,13 @@ import AdminAllArticles from "../Pages/adminAllArticles/AdminAllArticles";
 import AddPublisher from "../Pages/addPUblisher/AddPublisher";
 import ArticleSingle from "../Pages/allArticles/ArticleSingle";
 import UpdateArticles from "../Pages/updateArticles/UpdateArticles";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path:'/',
         element:<Main/>,
+        errorElement:<ErrorPage/>,
         children:[
             {
                 path:'/',
