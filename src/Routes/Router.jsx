@@ -74,7 +74,7 @@ export const router = createBrowserRouter([
         children:[
             {
                 path:'Statistic',
-                element:<AdminPichart/>
+                element:<AdminPrivate><AdminPichart/></AdminPrivate>
             },
             {
                 path:'allUsers',
