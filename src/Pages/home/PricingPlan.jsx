@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 export default function PricingPlan() {
     return (
-        <div className='max-w-screen-lg mx-auto my-20'>
+        <div className='max-w-screen-lg mx-auto my-32'>
             <h1 className='text-3xl font-bold text-center text-emerald-600 mb-14'>OUR SUBSCRIPTION PLANS</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 '>
             <Card size="lg" sx={{backgroundColor:'#e5faf4'}} variant="outlined">

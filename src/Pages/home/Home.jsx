@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import PricingPlan from "./PricingPlan";
 import ArticleCarosole from "./ArticleCarosole/ArticleCarosole";
+import Publisher from "./publisher/Publisher";
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             
             <ArticleCarosole/>
             <PricingPlan/>
+            <Publisher/>
            
         </div>
     );
