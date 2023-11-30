@@ -15,6 +15,8 @@ import AddPublisher from "../Pages/addPUblisher/AddPublisher";
 import ArticleSingle from "../Pages/allArticles/ArticleSingle";
 import UpdateArticles from "../Pages/updateArticles/UpdateArticles";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Privet from "../privet/Privet";
+import AdminPrivate from "../privet/AdminPrivate";
 
 export const router = createBrowserRouter([
     {
@@ -28,31 +30,31 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/addArticles',
-                element:<AddArticles/>
+                element:<Privet><AddArticles/></Privet>
             },
             {
                 path:"/allArticles",
-                element:<AllArticles/>
+                element:<Privet><AllArticles/></Privet>
             },
             {
                 path:"/subscription",
-                element:<Subscription/>
+                element:<Privet><Subscription/></Privet>
             },
             {
                 path:"/myArticles",
-                element:<MyArticles/>
+                element:<Privet><MyArticles/></Privet>
             },
             {
                 path:"/premiumArticles",
-                element:<PremiumArticles/>
+                element:<Privet><PremiumArticles/></Privet>
             },
             {
                 path:'/articleSingle/:id',
-                element:<ArticleSingle/>
+                element:<Privet><ArticleSingle/></Privet>
             },
             {
                 path:'/updateArticles/:id',
-                element:<UpdateArticles/>
+                element:<Privet><UpdateArticles/></Privet>
             }
         ]
     },
@@ -66,19 +68,19 @@ export const router = createBrowserRouter([
     },
     {
         path:'dashboard',
-        element:<Dashboard/>,
+        element:<AdminPrivate><Dashboard/></AdminPrivate>,
         children:[
             {
                 path:'allUsers',
-                element:<AllUsers/>
+                element:<AdminPrivate><AllUsers/></AdminPrivate>
             },
             {
                 path:'adminAllArticles',
-                element:<AdminAllArticles/>
+                element:<AdminPrivate><AdminAllArticles/></AdminPrivate>
             },
             {
                 path:'addPublisher',
-                element:<AddPublisher/>
+                element:<AdminPrivate><AddPublisher/></AdminPrivate>
             }
         ]
     }

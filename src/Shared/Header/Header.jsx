@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuthContext from "../../Hooks/useAuthContext";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
 
 const Header = () => {
     const { user, signout } = useAuthContext()
@@ -8,6 +10,14 @@ const Header = () => {
             .then()
             .catch(error => console.log(error))
     }
+    const axiosSecure = useAxiosSecure()
+    
+    const [admInfo,setAdminInfo]=useState({})
+    useEffect(()=>{
+         axiosSecure.get(`/users/${user?.email}`)
+        .then(res=>setAdminInfo(res.data))
+    },[user,axiosSecure])
+
     return (
         <div className=" shadow-md bg-teal-100 z-50 relative">
             <div className="flex justify-between items-center   max-w-screen-xl mx-auto px-6 ">
@@ -32,7 +42,7 @@ const Header = () => {
                         </li>
 
                         {
-                            user ? <li><Link to='/dashboard'>Dashboard</Link>
+                            admInfo?.rol==='admin' ? <li><Link to='/dashboard'>Dashboard</Link>
                             </li> : ''
                         }
 

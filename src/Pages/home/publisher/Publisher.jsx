@@ -10,7 +10,6 @@ const Publisher = () => {
       axiosSecure.get(`/publishers`)
           .then(data => setPublishers(data.data))
   }, [ axiosSecure])
-  console.log(publishers)
     return (
         <div className="max-w-screen-xl mx-auto px-7 mb-32">
             <h1 className='text-3xl font-bold text-center text-emerald-600 mb-14'>OUR PUBLISHERS</h1>
