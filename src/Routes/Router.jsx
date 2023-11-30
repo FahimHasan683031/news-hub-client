@@ -17,6 +17,7 @@ import UpdateArticles from "../Pages/updateArticles/UpdateArticles";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Privet from "../privet/Privet";
 import AdminPrivate from "../privet/AdminPrivate";
+import AdminPichart from "../Pages/AdminPIChart/AdminPichart";
 
 export const router = createBrowserRouter([
     {
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
         path:'dashboard',
         element:<AdminPrivate><Dashboard/></AdminPrivate>,
         children:[
+            {
+                path:'Statistic',
+                element:<AdminPichart/>
+            },
             {
                 path:'allUsers',
                 element:<AdminPrivate><AllUsers/></AdminPrivate>

@@ -30,22 +30,24 @@ const Header = () => {
                     <ul className="menu text-sm font-medium text-gray-700 menu-horizontal ">
                         <li><Link to='/'>Home</Link>
                         </li>
-                        <li><Link to='/addArticles'> Add Articles</Link>
-                        </li>
-                        <li><Link to='/myArticles'> My Articles</Link>
-                        </li>
-                        <li><Link to='/allArticles'>All Articles</Link>
-                        </li>
-                        <li><Link to='/premiumArticles'>Premium Articles</Link>
-                        </li>
-                        <li><Link to='/subscription'>Subscription</Link>
-                        </li>
-
                         {
-                            admInfo?.rol==='admin' ? <li><Link to='/dashboard'>Dashboard</Link>
-                            </li> : ''
+                            user&&<div className="flex "><li><Link to='/addArticles'> Add Articles</Link>
+                            </li>
+                            <li><Link to='/myArticles'> My Articles</Link>
+                            </li>
+                            <li><Link to='/allArticles'>All Articles</Link>
+                            </li>
+                            <li><Link to='/premiumArticles'>Premium Articles</Link>
+                            </li>
+                            <li><Link to='/subscription'>Subscription</Link>
+                            </li>
+    
+                            {
+                                admInfo?.rol==='admin' ? <li><Link to='/dashboard'>Dashboard</Link>
+                                </li> : ''
+                            }
+    </div>
                         }
-
                     </ul>
                 </div>
                 <div className="flex">

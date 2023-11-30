@@ -20,7 +20,7 @@ export default function HomModal() {
         setOpen(false);
     };
     if (iscalled) {
-        setTimeout(handleClickOpen, 2000);
+        setTimeout(handleClickOpen, 10000);
         setIsCalled(false)
     }
 
@@ -44,6 +44,9 @@ export default function HomModal() {
                 </DialogContent>
                 <DialogActions>
                     <Link to='/subscription'><Button onClick={handleClose} style={{ padding: '6px 6px', fontSize: '12px' }} variant="contained" >Tack Subscription</Button></Link>
+                    <Button onClick={handleClose} style={{padding:'6px 6px',fontSize:'12px', backgroundColor:"tomato"}} variant="contained" autoFocus>
+                        Cancel
+                    </Button>
                     
                 </DialogActions>
             </Dialog>

@@ -4,6 +4,7 @@ import ArticleCarosole from "./ArticleCarosole/ArticleCarosole";
 import Publisher from "./publisher/Publisher";
 import Statistic from "./Statistic";
 import HomModal from "./HomModal";
+import Reviews from "../../Components/Review/Reviews";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <PricingPlan/>
             <Publisher/>
             <Statistic/>
+            <Reviews/>
             
            
         </div>
