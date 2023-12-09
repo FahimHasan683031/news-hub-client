@@ -51,10 +51,10 @@ const AuthProvider = ({ children }) => {
             const email = currentUser?.email
             const data = { email }
             if (currentUser) {
-                axios.post('https://news-portal-server-gamma.vercel.app/api/v1/access', data, { withCredentials: true })
+                axios.post('http://localhost:5000/api/v1/access', data, { withCredentials: true })
                     .then(res => console.log(res.data))
             } else {
-                axios.post('https://news-portal-server-gamma.vercel.app/api/v1/logout', data, { withCredentials: true })
+                axios.post('http://localhost:5000/api/v1/logout', data, { withCredentials: true })
                     .then(res => console.log(res.data))
             }
         })
